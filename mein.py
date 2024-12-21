@@ -1,14 +1,17 @@
+from fileinput import filename
+
 import telebot
 
 token = '7636094498:AAFlezEInLwscQvSYtBHzlWmVcwEKjyVoEo'
 bot = telebot.TeleBot(token)
+filename = "bot_message.txt"
 
 @bot.message_handler(content_types=['text'])
-def test_text(message):
-    print(message)
+def is_text(message):
+    with open(filename, 'a') as file:
+        file.write(message.text + '\n')
 
-    msg = message.text + ' - this is a text message'
-    bot.send_message(message.chat.id, msg)
+    bot.send_message(message.chat.id, 'Збережено до файла')
 
 
 if __name__ == '__main__':
