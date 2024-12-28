@@ -1,0 +1,1 @@
+{"name": "Sasha", "city": "K-P", "hobbies": ["walking"]}
